@@ -1,0 +1,87 @@
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+}
+
+*:focus{
+    outline: none;
+}
+
+.divPrimary{
+    width: 100%;
+}
+
+.h1Title{
+    font-size: 9vw;
+    margin-top: 85px;
+    color: #8800FF;
+}
+
+.ionContent{
+    --background: #e6eaf1;
+}
+
+.imgLogo{
+    width: 35%;
+    margin-top: 40px;
+    border-radius: 10px;
+}
+
+.inputLogin{
+    width: 80%;
+    height: 50px;
+    border: none;
+    border-radius: 22px;
+    padding-left: 15px;
+}
+
+.marginTopImg{
+    margin: 30px 0 0 0px;
+}
+
+.margintopInput{
+    margin-top: 15px;
+}
+
+.btnLogin{
+    width: 80%;
+    margin-top: 30px;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background-color: #8800FF;
+    font-size: 5vw;
+    transition: all .2s;
+}
+
+.btnLogin:focus{
+    background-color: #a43bff;
+}
+
+.h4Remember{
+    color: #00000085;
+}
+
+.ionGrid{   
+    padding: 10px 40px 0 40px;
+}
+
+.chbox{
+    margin-top: 3px;
+}
+
+.divSignUp{
+    position: absolute;
+    bottom: 0px;
+}
+
+.h3SignUp{
+    margin-bottom: 10px;
+    color: #423333;
+}
+
+.iconSignUp{
+    color: #2f2929;
+    font-size: 15px;
+    padding-top: 0px;
+}

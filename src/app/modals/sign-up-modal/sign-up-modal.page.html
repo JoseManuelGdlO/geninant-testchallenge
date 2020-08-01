@@ -1,0 +1,50 @@
+<ion-content class="ion-padding" class="main-view">
+  <div (click)="dismissModal(false)" class="overlay"></div>
+  <div class="backgroundColor modal_content">
+
+    <div>
+     <h3 class="color-primary h1Title">Nueva <br> <span class="color-terciary spanAccount">Cuenta</span></h3>
+    </div>
+
+    <form class="form" (ngSubmit)="signUp()">
+      <ion-grid class="grid">
+        <ion-row>
+          <h4 class="text-small h4Labels" position="floating">Correo</h4>
+        </ion-row>
+        <ion-row>
+          <input class="input width-100" [(ngModel)]="signUpData.user" name="email" type="email" (blur)="checkEmail()">
+        </ion-row>
+       </ion-grid>
+
+       <ion-grid class="grid">
+        <ion-row>
+          <h4 class="text-small h4Labels" position="floating">Contraseña</h4>
+        </ion-row>
+        <ion-row>
+          <input class="input width-100" (blur)="validatePassword()" [(ngModel)]="signUpData.password" name="contraseña" type="password">
+          <h4 class="text-xxsmall h4Labels color-terciary" position="floating">La contraseña debe contener 6 digitos o mas</h4>
+        </ion-row>
+       </ion-grid>
+
+       <ion-grid class="grid">
+        <ion-row>
+          <h4 class="text-small h4Labels" position="floating">Repite tu contraseña</h4>
+        </ion-row>
+        <ion-row>
+          <input class="input width-100" [(ngModel)]="signUpData.repeatPassword" (keyup)="validateRepeatPassword()" name="contraseña" type="password">
+        </ion-row>
+        <ion-row>
+          <h4 class="text-xsmall h4LabelMessage color-terciary width-100 center" position="floating">{{message}}</h4>
+        </ion-row>
+       </ion-grid>
+        
+     <div class="width-100 center">
+      <button class="btnLogin color-blank text-bold box-shadow" type="submit" [disabled]="!isDisabled()">Crear Cuenta</button>
+     </div>
+     
+    </form>
+
+  </div>
+
+
+</ion-content>

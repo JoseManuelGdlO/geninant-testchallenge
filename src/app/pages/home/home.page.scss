@@ -1,0 +1,19 @@
+
+
+ .btnLogin{
+    width: 80%;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+    background-color: #8800FF;
+    font-size: 5vw;
+    transition: all .2s;
+}
+
+.btnLogin:focus{
+    background-color: #a43bff;
+}
+
+.btnLogin:disabled{
+  background-color: rgb(58, 57, 57);
+}

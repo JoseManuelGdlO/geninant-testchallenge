@@ -24,3 +24,97 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.no-padding{
+    padding: 0;
+}
+
+.no-margin{
+    margin: 0;
+}
+
+.color-primary{
+    color: black;
+}
+
+.color-blank{
+    color: white;
+}
+
+.color-terciary{
+    color:#6a03c5
+}
+
+.text-small{
+    font-size: 4vw;
+}
+
+.text-xsmall{
+    font-size: 3.4vw;
+}
+
+.text-xxsmall{
+    font-size: 3vw;
+}
+
+.text-xxxsmall{
+    font-size: 2.5vw;
+}
+
+.center{
+    text-align: center;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.text-bold{
+    font-weight: 700;
+}
+
+.box-shadow{
+    -webkit-box-shadow: 5px 22px 53px -4px rgba(0,0,0,0.4);
+    -moz-box-shadow: 5px 22px 53px -4px rgba(0,0,0,0.4);
+    box-shadow: 5px 22px 53px -4px rgba(0,0,0,0.4);
+}
+
+.width-100{
+    width: 100%;
+}
+
+.modal-wrapper{
+    background: transparent !important;
+}
+

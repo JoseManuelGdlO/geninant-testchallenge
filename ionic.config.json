@@ -1,5 +1,7 @@
 {
   "name": "pruebaTecnicaJMGO",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
