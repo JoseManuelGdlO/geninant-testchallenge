@@ -18,6 +18,11 @@ export class ConnectionFirebaseService implements CanActivate {
   ) { }
 
 
+  /**
+  * 
+  * Function for validate if user have permissions and
+  * allow enter next page
+  */
   async canActivate():Promise<boolean> {
     let response = await this.storage.get('LOGGED');
 
@@ -29,6 +34,13 @@ export class ConnectionFirebaseService implements CanActivate {
     return response;
   }
 
+  /**
+  * 
+  * Function for login
+  * @param LoginModel
+  * @returns Model with code of succes or error
+  * 
+  */
   async login(loginData: LoginModel): Promise<ErrorModel>{
     try{
       let response:any = await this.ngFireAuth.signInWithEmailAndPassword(loginData.user, loginData.password);
@@ -40,6 +52,13 @@ export class ConnectionFirebaseService implements CanActivate {
     
   }
 
+  /**
+  * 
+  * Function for Sign Up in the App
+  * @param LoginModel
+  * @returns Model with code of succes or error
+  * 
+  */
   async signUp(signUpData: LoginModel): Promise<ErrorModel>{
     try{
       await this.ngFireAuth.createUserWithEmailAndPassword(signUpData.user, signUpData.password);
@@ -51,7 +70,11 @@ export class ConnectionFirebaseService implements CanActivate {
    
   }
 
-  // Sign-out 
+  /**
+  * 
+  * Function log out of of application
+  * 
+  */
   SignOut() {
     return this.ngFireAuth.signOut();
   }
