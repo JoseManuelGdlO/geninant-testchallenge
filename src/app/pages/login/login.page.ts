@@ -60,7 +60,7 @@ export class LoginPage implements OnInit {
         this.storage.set('USER', this.loginData.user);
         this.storage.set('PASS', this.loginData.password);
       }
-     
+     await this.storage.set('LOGGED', true);
      await this.storage.set('TOKEN', response.code);
      this.router.navigateByUrl('home');
     } else {

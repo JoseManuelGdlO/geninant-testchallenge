@@ -4,6 +4,7 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { LoginModel } from 'src/app/models/login-model';
 import { CanActivate} from '@angular/router';
 import { ErrorModel } from 'src/app/models/error-model';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,19 @@ export class ConnectionFirebaseService implements CanActivate {
   constructor(
     public afStore: AngularFirestore,
     public ngFireAuth: AngularFireAuth,  
-    public ngZone: NgZone 
+    public storage: Storage
   ) { }
 
 
-  canActivate(): boolean {
-    return true;
+  async canActivate():Promise<boolean> {
+    let response = await this.storage.get('LOGGED');
+
+    if(response == null || !response){
+      console.error('No tienes permisos para acceder a esta pantalla');
+      response = false
+    }
+
+    return response;
   }
 
   async login(loginData: LoginModel): Promise<ErrorModel>{

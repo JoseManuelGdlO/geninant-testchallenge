@@ -24,6 +24,7 @@ export class HomePage implements OnInit {
 
   async logOut(){
     await this.storage.clear();
+    await this.storage.set('LOGGED', false);
     this.connectionFirebaseService.SignOut();
     this.router.navigateByUrl('');
 
