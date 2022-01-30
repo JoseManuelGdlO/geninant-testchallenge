@@ -10,11 +10,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { SignUpModalPageModule } from './modals/sign-up-modal/sign-up-modal.module';
 import { LoadingModalPageModule } from './modals/loading-modal/loading-modal.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,7 +31,6 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
-    AngularFirestoreModule,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

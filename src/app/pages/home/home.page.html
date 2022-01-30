@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="getInit()">
+  <ion-refresher slot="fixed" (ionRefresh)="getInit($event)">
     <ion-refresher-content
       pullingIcon="chevron-down-circle-outline"
       pullingText="arrastra para actualizar"
@@ -13,6 +13,13 @@
       refreshingText="Actualizando...">
     </ion-refresher-content>
   </ion-refresher>
+  <ion-item>
+    <ion-label>Filtrar Por</ion-label>
+    <ion-select value="0" okText="Seleccionar" cancelText="Cancelar" (ionChange)="addFilter($event)">
+      <ion-select-option value="0">Todos</ion-select-option>
+      <ion-select-option *ngFor="let items of marks" [value]="item.idMarca">{{item.nombre}}</ion-select-option>
+    </ion-select>
+  </ion-item>
 
   <ion-list>
     <ion-item *ngFor="let item of list">

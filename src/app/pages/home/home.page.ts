@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
   constructor(
     public modalLoadingController: ModalController,
     public router: Router,
+    public storage: Storage,
     public apiService: ApiService
   ) { }
 
@@ -27,7 +28,7 @@ export class HomePage implements OnInit {
     this.getInit();
   }
 
-  async getInit() {
+  async getInit(event?) {
     this.openLoadingModal();
     try {
         const response = await this.apiService.getAuto();
@@ -40,7 +41,21 @@ export class HomePage implements OnInit {
       console.error(error);
     }
     this.dismissLoading();
+    if(event) {
+      event.target.complete();
+    }
+  }
 
+  async addFilter(value: CustomEvent) {
+    this.openLoadingModal();
+    const parameters = `?idMarca=${value.detail.value}`;
+    const response = await this.apiService.getAuto(parameters)
+    if (response.response) {
+      this.list = response.data.resultados;
+    }
+    this.dismissLoading();
+    
+    
   }
 
   async logOut(){
