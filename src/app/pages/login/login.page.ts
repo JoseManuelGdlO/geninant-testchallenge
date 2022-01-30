@@ -3,10 +3,10 @@ import { ToastController, ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { LoginModel } from 'src/app/models/login-model';
-import { ConnectionFirebaseService } from 'src/app/services/connection-firebase/connection-firebase.service';
 import { SignUpModalPage } from 'src/app/modals/sign-up-modal/sign-up-modal.page';
 import { LoadingModalPage } from 'src/app/modals/loading-modal/loading-modal.page';
-import { ErrorModel } from 'src/app/models/error-model';
+import { ResponseModel } from 'src/app/models/response-model';
+import { ApiService } from 'src/app/services/api/api.service';
 
 
 @Component({
@@ -21,9 +21,9 @@ export class LoginPage implements OnInit {
 
   constructor(
     public toastCtrl: ToastController,
+    public apiService: ApiService,
     public router: Router,
     public storage: Storage,
-    public connectionFirebaseService: ConnectionFirebaseService,
     public modalCtrl: ModalController,
     public modalLoadingController: ModalController
   ) { }
@@ -52,20 +52,20 @@ export class LoginPage implements OnInit {
     }
     this.openLoadingModal();
 
-     let response: ErrorModel = await this.connectionFirebaseService.login(this.loginData);
+     let response: ResponseModel = await this.apiService.login(this.loginData);
 
-    if(!response.flag){
+    if(response.response){
 
       if (this.isRemember){
         this.storage.set('USER', this.loginData.user);
         this.storage.set('PASS', this.loginData.password);
       }
      await this.storage.set('LOGGED', true);
-     await this.storage.set('TOKEN', response.code);
+     await this.storage.set('TOKEN', response.data.jwt);
      this.router.navigateByUrl('home');
     } else {
       const toast = this.toastCtrl.create({
-        message: response.code,
+        message: response.message,
         duration: 3000,
         position: 'top'
       });

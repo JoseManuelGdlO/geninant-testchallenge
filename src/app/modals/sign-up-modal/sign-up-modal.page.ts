@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, ToastController } from '@ionic/angular';
+import { ResponseModel } from 'src/app/models/response-model';
 import { LoginModel } from 'src/app/models/login-model';
-import { ConnectionFirebaseService } from 'src/app/services/connection-firebase/connection-firebase.service';
-import { ErrorModel } from 'src/app/models/error-model';
+import { ApiService } from 'src/app/services/api/api.service';
 import { LoadingModalPage } from '../loading-modal/loading-modal.page';
 
 @Component({
@@ -12,7 +12,7 @@ import { LoadingModalPage } from '../loading-modal/loading-modal.page';
 })
 export class SignUpModalPage implements OnInit {
 
-  signUpData: LoginModel = new LoginModel();
+  signUpData = new LoginModel()
   message: string = ' ';
 
   validEmail: boolean = false;
@@ -21,15 +21,20 @@ export class SignUpModalPage implements OnInit {
 
   constructor(
     public modalController: ModalController,
-    public connectionFirebaseService: ConnectionFirebaseService,
     public toastController: ToastController,
+    public apiService: ApiService,
     public modalLoadingController: ModalController
   ) { }
 
   ngOnInit() {
-    this.signUpData.password = '';
-    this.signUpData.user = '';
-    this.signUpData.repeatPassword = '';
+    this.signUpData = {
+      password: '',
+      name: '',
+      birthdate: '',
+      lastname: '',
+      repeatPassword: '',
+      user: ''
+    }
   }
 
   dismissModal(finish: boolean){
@@ -41,7 +46,8 @@ export class SignUpModalPage implements OnInit {
   }
 
   checkEmail(){
-    let email =  this.signUpData.user;
+    
+    let email = this.signUpData.user;
     let index = email.indexOf('@');
 
     if(index == -1){
@@ -92,15 +98,27 @@ export class SignUpModalPage implements OnInit {
   }
   
   isDisabled(): boolean{
-    if(this.signUpData.password.length == 0){
+    if(this.signUpData.password.length === 0){
       return false;
     }
 
-    if(this.signUpData.user.length == 0){
+    if(this.signUpData.user.length === 0){
+      return false;
+    }
+    
+    if(this.signUpData.name.length === 0){
+      return false;
+    }
+    
+    if(this.signUpData.lastname.length === 0){
+      return false;
+    }
+    
+    if(this.signUpData.birthdate.length === 0){
       return false;
     }
 
-    if(this.signUpData.repeatPassword.length == 0){
+    if(this.signUpData.repeatPassword.length === 0){
       return false;
     }
 
@@ -120,10 +138,12 @@ export class SignUpModalPage implements OnInit {
   }
 
   async signUp(){
-    this.openLoadingModal()
-   let response: ErrorModel = await this.connectionFirebaseService.signUp(this.signUpData);
 
-   if(!response.flag){
+   this.openLoadingModal()
+
+   let response: ResponseModel = await this.apiService.registerClient(this.signUpData);
+
+   if(response.response){
     const toast = await this.toastController.create({
       message: 'Registro Existoso!',
       duration: 2000,
@@ -134,7 +154,7 @@ export class SignUpModalPage implements OnInit {
     this.dismissModal(true);
    } else {
     this.dismissLoading();
-     this.message = response.code;
+     this.message = response.message;
    }
   }
 

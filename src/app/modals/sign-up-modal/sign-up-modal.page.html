@@ -9,10 +9,34 @@
     <form class="form" (ngSubmit)="signUp()">
       <ion-grid class="grid">
         <ion-row>
+          <h4 class="text-small h4Labels" position="floating">Nombre</h4>
+        </ion-row>
+        <ion-row>
+          <input class="input width-100" [(ngModel)]="signUpData.name" name="name" type="name">
+        </ion-row>
+       </ion-grid>
+      <ion-grid class="grid">
+        <ion-row>
+          <h4 class="text-small h4Labels" position="floating">Apellido</h4>
+        </ion-row>
+        <ion-row>
+          <input class="input width-100" [(ngModel)]="signUpData.lastname" name="lastname" type="lastname">
+        </ion-row>
+       </ion-grid>
+      <ion-grid class="grid">
+        <ion-row>
+          <h4 class="text-small h4Labels" position="floating">Fecha de Cumpleaños</h4>
+        </ion-row>
+        <ion-row>
+          <ion-datetime [(ngModel)]="signUpData.birthdate" name="birthdate" type="birthdate"></ion-datetime>
+        </ion-row>
+       </ion-grid>
+      <ion-grid class="grid">
+        <ion-row>
           <h4 class="text-small h4Labels" position="floating">Correo</h4>
         </ion-row>
         <ion-row>
-          <input class="input width-100" [(ngModel)]="signUpData.user" name="email" type="email" (blur)="checkEmail()">
+          <input class="input width-100" [(ngModel)]="signUpData.user" name="user" type="user" (blur)="checkEmail()">
         </ion-row>
        </ion-grid>
 
