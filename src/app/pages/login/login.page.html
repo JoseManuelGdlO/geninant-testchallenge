@@ -4,7 +4,7 @@
     <h1 class="h1Title color-primary text-bold">Geniant</h1>
     <img class="imgLogo" src="assets/logo.png" alt="image logo" />
 
-    <form (ngSubmit)="login()">
+    <form class="form" (ngSubmit)="login()">
       <input class="inputLogin marginTopImg box-shadow" [(ngModel)]="loginData.user" name="user" type="text"
         placeholder="Correo electronico" />
       <input class="inputLogin margintopInput box-shadow" [(ngModel)]="loginData.password" name="password"

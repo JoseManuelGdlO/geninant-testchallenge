@@ -52,27 +52,33 @@ export class LoginPage implements OnInit {
     }
     this.openLoadingModal();
 
-     let response: ResponseModel = await this.apiService.login(this.loginData);
+    try {
+      let response: ResponseModel = await this.apiService.login(this.loginData);
 
-    if(response.response){
-
-      if (this.isRemember){
-        this.storage.set('USER', this.loginData.user);
-        this.storage.set('PASS', this.loginData.password);
+      if(response.response){
+  
+        if (this.isRemember){
+          this.storage.set('USER', this.loginData.user);
+          this.storage.set('PASS', this.loginData.password);
+        }
+       await this.storage.set('LOGGED', true);
+       await this.storage.set('TOKEN', response.data.jwt);
+       this.router.navigateByUrl('home');
+      } else {
+        const toast = this.toastCtrl.create({
+          message: response.message,
+          duration: 3000,
+          position: 'top'
+        });
+        (await toast).present();
       }
-     await this.storage.set('LOGGED', true);
-     await this.storage.set('TOKEN', response.data.jwt);
-     this.router.navigateByUrl('home');
-    } else {
-      const toast = this.toastCtrl.create({
-        message: response.message,
-        duration: 3000,
-        position: 'top'
-      });
-      (await toast).present();
+    } catch (error) {
+      console.error(error);
+      this.dismissLoading();
     }
+    
 
-    this.dismissLoading();
+    
 
 
   }

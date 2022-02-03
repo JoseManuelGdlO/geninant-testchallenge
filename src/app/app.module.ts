@@ -13,9 +13,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SignUpModalPageModule } from './modals/sign-up-modal/sign-up-modal.module';
 import { LoadingModalPageModule } from './modals/loading-modal/loading-modal.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BodyResponsiveComponent } from './components/body-responsive/body-responsive.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    BodyResponsiveComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule,

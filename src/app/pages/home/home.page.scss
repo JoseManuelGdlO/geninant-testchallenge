@@ -17,3 +17,12 @@
 .btnLogin:disabled{
   background-color: rgb(58, 57, 57);
 }
+
+
+@media (min-width: 800px) { 
+  .btnLogin {
+    width: 35%;
+    font-size: 3vw;
+  }
+
+}

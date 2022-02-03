@@ -179,4 +179,8 @@ export class SignUpModalPage implements OnInit {
     this.modalLoadingController.dismiss();
   }
 
+  back() {
+    this.modalController.dismiss();
+  }
+
 }
